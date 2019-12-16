@@ -4,19 +4,21 @@
     <section class="bg-bottom bg-cover py-56" style="background-image: url('https://images.unsplash.com/photo-1463693396721-8ca0cfa2b3b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80')">
       <div class="flex flex-col items-center">
         <span class="text-5xl sm:text-6xl px-4 text-white text-center font-semibold">The Perfect Trip Made Easy</span>
-        <form class="mt-8 w-11/12 sm:w-3/4 md:w-auto md:flex bg-white rounded-lg shadow-lg">
-          <div class="py-6 md:py-4 md:w-48 lg:w-56 md:border-r">
+        <span class="text-3xl px-4 text-white text-center leading-none">Let us plan your next getaway</span>
+        <form class="mt-8 w-11/12 sm:w-3/4 md:w-auto md:flex bg-white rounded-lg shadow-2xl">
+          <div class="py-6 md:py-4 md:w-48 lg:w-64 border-b md:border-b-0 md:border-r">
             <label class="px-4 text-gray-500" for="from">From</label>
             <Dropdown prompt="Departing Location" :options="departures"/>
           </div>
-          <div class="py-6 md:py-4 md:w-48 lg:w-56 md:border-r">
+          <div class="py-6 md:py-4 md:w-48 lg:w-64 border-b md:border-b-0 md:border-r">
             <label class="px-4 text-gray-500" for="to">To</label>
             <Dropdown prompt="Destination" :options="arrivals"/>
           </div>
-          <div class="py-6 md:py-4 md:w-48 lg:w-56">
+          <div class="py-6 md:py-4 md:w-48 lg:w-64">
             <label class="px-4 text-gray-500" for="from">When</label>
+            <img src="./assets/img/calendar.svg" class="ml-4 h-8 w-8"/>
           </div>
-          <a href="#" class="py-5 px-6 md:px-10 flex items-center justify-center inline-block rounded-b-lg md:rounded-b-none md:rounded-r-lg bg-red-500 text-white text-xl">Search</a>
+          <a href="#" class="py-5 px-6 md:px-10 flex items-center justify-center focus:outline-none focus:shadow-outline inline-block rounded-b-lg md:rounded-b-none md:rounded-r-lg bg-red-500 text-white text-xl">Search</a>
         </form>
       </div>
     </section>
