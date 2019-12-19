@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-20 bg-white shadow">
+  <header class="sticky top-0 z-20 px-2 bg-white shadow sm:px-8">
     <div class="max-w-6xl mx-auto sm:flex sm:justify-between sm:items-center sm:py-5">
       <div class="flex items-center justify-between px-4 py-5 sm:p-0">
         <a class="flex items-center" tabindex="-1" href="#">
