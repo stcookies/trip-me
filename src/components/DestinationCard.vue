@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="hidden p-4 bg-white rounded shadow md:flex">
-      <div class="flex flex-wrap w-1/2 lg:w-2/3">
+      <div class="flex flex-wrap w-1/2 xl:flex-no-wrap lg:w-2/3">
         <img class="object-cover w-full h-64 max-w-2xl pr-4 xl:w-1/2 xl:pr-0" :src="destination.image" :alt="destination.location">
         <div class="pl-6">
-          <span class="block pt-5 text-2xl font-semibold tracking-wide uppercase lg:pt-0">{{ destination.location }}</span>
+          <span class="block pt-5 text-3xl font-semibold tracking-wide uppercase lg:pt-4 xl:pt-0">{{ destination.location }}</span>
           <span class="block text-sm text-gray-500">{{ destination.country }}</span>
           <div class="flex pt-2">
             <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" :class="i <= destination.rating ? 'text-yellow-400' : 'text-gray-400'" class="w-4 h-4 fill-current">
@@ -12,7 +12,7 @@
             </svg>
           </div>
           <span class="inline-block pb-3 text-xs font-semibold text-blue-500">From {{ destination.reviews }} reviews</span>
-          <div class="flex justify-between pt-3 border-t border-gray-300">
+          <div class="flex justify-between pt-3 border-t border-gray-300 xl:pr-4">
             <div class="pr-20">
               <span class="font-medium">Duration</span>
               <span class="block pb-3 text-sm text-gray-500 font">{{ destination.duration }}</span>
@@ -26,7 +26,7 @@
               <span class="block text-sm text-gray-500">{{ destination.hotel }}</span>
             </div>
           </div>
-          <a href="#" class="inline-block mt-2 text-xs text-blue-500 opacity-75">View full itinerary &#8594;</a>
+          <a href="#" class="inline-block mt-2 text-xs font-semibold text-blue-500 opacity-75">View full itinerary &#8594;</a>
         </div>
       </div>
       <div class="flex flex-col items-center justify-center w-1/2 mt-5 lg:w-1/3 md:mt-0 md:border-l md:border-gray-300">

@@ -1,152 +1,71 @@
 <template>
-  <div id="app" class="antialiased">
+  <div id="app" class="antialiased text-gray-800">
     <Navbar/>
-    <section class="py-56 bg-bottom bg-cover" style="background-image: url('https://images.unsplash.com/photo-1463693396721-8ca0cfa2b3b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80')">
+    <section class="py-56 bg-bottom bg-cover" style="background-image: url('https://images.unsplash.com/photo-1463693396721-8ca0cfa2b3b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=100')">
       <div class="flex flex-col items-center">
         <span class="px-4 text-5xl font-semibold text-center text-white sm:text-6xl">The Perfect Trip Made Easy</span>
         <span class="px-4 text-3xl leading-none text-center text-white">Let us plan your next getaway</span>
         <form class="w-11/12 mt-8 bg-white rounded-lg shadow-2xl sm:w-3/4 md:w-auto md:flex">
           <div class="py-6 border-b md:py-4 md:w-48 lg:w-64 md:border-b-0 md:border-r">
-            <label class="px-4 text-gray-500" for="from">From</label>
-            <Dropdown prompt="Departing Location" :options="departures"/>
+            <label class="px-4 font-semibold text-gray-500" for="from">From</label>
+            <Select prompt="Departing Location" :options="departures"/>
           </div>
           <div class="py-6 border-b md:py-4 md:w-48 lg:w-64 md:border-b-0 md:border-r">
-            <label class="px-4 text-gray-500" for="to">To</label>
-            <Dropdown prompt="Destination" :options="arrivals"/>
+            <label class="px-4 font-semibold text-gray-500" for="to">To</label>
+            <Select prompt="Destination" :options="arrivals"/>
           </div>
           <div class="py-6 md:py-4 md:w-48 lg:w-64">
-            <label class="px-4 text-gray-500" for="from">When</label>
-            <img src="./assets/img/calendar.svg" class="w-8 h-8 ml-4"/>
+            <label class="px-4 font-semibold text-gray-500" for="from">When</label>
+            <svg class="w-6 h-6 mt-1 ml-3 fill-current" viewBox="0 0 24 24">
+              <defs/>
+              <path class="heroicon-ui" d="M17 4h2a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6c0-1.1.9-2 2-2h2V3a1 1 0 112 0v1h6V3a1 1 0 012 0v1zm-2 2H9v1a1 1 0 11-2 0V6H5v4h14V6h-2v1a1 1 0 01-2 0V6zm4 6H5v8h14v-8z"/>
+            </svg>
           </div>
-          <a href="#" class="flex items-center justify-center inline-block px-6 py-5 text-xl text-white bg-red-500 rounded-b-lg md:px-10 focus:outline-none focus:shadow-outline md:rounded-b-none md:rounded-r-lg">Search</a>
+          <a href="#" class="flex items-center justify-center inline-block px-6 py-5 text-xl font-semibold text-white bg-red-500 rounded-b-lg md:px-10 focus:outline-none focus:shadow-outline md:rounded-b-none md:rounded-r-lg">Search</a>
         </form>
       </div>
     </section>
-    <section class="flex flex-wrap px-4 pt-8 -mx-2 bg-gray-200 lg:justify-center">
+    <section class="flex flex-wrap px-4 pt-8 bg-gray-200 lg:justify-center">
       <div class="w-full px-2 lg:hidden">
         <a class="text-xl text-blue-500 cursor-pointer" @click="showFilters = !showFilters">{{ showFilters ? 'Hide Filters' : 'Filter Destinations &#8250;' }}</a>
       </div>
-      <div class="self-start w-full max-w-sm px-2 lg:block lg:w-1/3 lg:mt-0" :class="showFilters ? 'block' : 'hidden'">
+      <div class="self-start w-full max-w-sm px-2 lg:block lg:w-1/3 lg:mt-0">
         <h1 class="hidden text-2xl font-semibold lg:block">Filters</h1>
-        <div class="flex flex-col flex-wrap p-8 mt-4 bg-white rounded-lg shadow">
-          <span class="text-lg font-semibold text-gray-800">Categories</span>
-          <div class="flex flex-wrap items-center justify-between pt-3">
-            <div class="w-full sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">Honeymoon</span>
-            </div>
-            <div class="w-full pt-2 sm:pt-0 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">Family</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">Friends</span>
-            </div>
-          </div>
-          <span class="block pt-8 text-lg font-semibold text-gray-800">Days</span>
-          <div class="flex flex-wrap items-center justify-between pt-3">
-            <div class="w-full sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">1-2</span>
-            </div>
-            <div class="w-full pt-2 sm:pt-0 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">3-5</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">6-8</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">8-10</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">11+</span>
-            </div>
-          </div>
-          <span class="block pt-8 text-lg font-semibold text-gray-800">Budget (USD)</span>
-          <div class="flex flex-wrap pt-3">
-            <div class="w-full sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">0-1000</span>
-            </div>
-            <div class="w-full pt-2 sm:pt-0 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">1000-2500</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">2500-5000</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">5000-7500</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">7500-10,000</span>
-            </div>
-            <div class="w-full pt-2 sm:w-1/2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="text-md">10,000+</span>
-            </div>
-          </div>
-          <span class="block pt-8 text-lg font-semibold text-gray-800">Hotel Rating</span>
-          <div class="pt-3">
-            <div class="flex items-center">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="pr-2 text-md">5 star</span>
-              <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" :class="i <= 5 ? 'text-yellow-400' : 'text-gray-400'" class="w-4 h-4 fill-current">
-                <path d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z" />
-              </svg>
-            </div>
-            <div class="flex items-center pt-2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="pr-2 text-md">4 star</span>
-              <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" :class="i <= 4 ? 'text-yellow-400' : 'text-gray-400'" class="w-4 h-4 fill-current">
-                <path d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z" />
-              </svg>
-            </div>
-            <div class="flex items-center pt-2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="pr-2 text-md">3 star</span>
-              <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" :class="i <= 3 ? 'text-yellow-400' : 'text-gray-400'" class="w-4 h-4 fill-current">
-                <path d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z" />
-              </svg>
-            </div>
-            <div class="flex items-center pt-2">
-              <input class="w-5 h-5 mr-2 leading-tight form-checkbox" type="checkbox">
-              <span class="pr-2 text-md">2 star</span>
-              <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" :class="i <= 2 ? 'text-yellow-400' : 'text-gray-400'" class="w-4 h-4 fill-current">
-                <path d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z" />
-              </svg>
-            </div>
+        <Filters class="lg:block" :class="showFilters ? 'block' : 'hidden'"/>
+        <div class="relative hidden h-64 mt-4 overflow-hidden rounded-lg lg:block">
+          <img class="absolute inset-0 object-cover h-full rounded-lg" src="https://images.unsplash.com/photo-1486868451447-83c6bf387a38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"/>
+          <div class="absolute inset-0 bg-red-300 rounded-lg opacity-25"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-between">
+            <span class="mt-5 text-lg font-semibold text-center text-white uppercase">Discover the Perfect Honeymoon</span>
+            <a class="px-8 py-2 mb-8 text-sm font-semibold text-white bg-red-500 rounded-lg" href="#">More</a>
           </div>
         </div>
       </div>
-      <div class="self-center w-full max-w-6xl px-2 mt-5 lg:w-2/3 lg:mt-0">
+      <div class="self-center w-full max-w-6xl px-2 pb-8 mt-5 lg:w-2/3 lg:mt-0">
         <span class="text-2xl font-semibold">Popular Destinations</span>
         <div class="mt-4" v-for="(destination, index) in destinations" :key="index">
           <DestinationCard :destination="destination"/>
         </div>
       </div>
     </section>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-import Dropdown from './components/Dropdown'
+import Select from './components/Select'
+import Filters from './components/Filters'
 import DestinationCard from './components/DestinationCard'
+import Footer from './components/Footer'
 export default {
   name: 'app',
   components: {
     Navbar,
-    Dropdown,
-    DestinationCard
+    Select,
+    Filters,
+    DestinationCard,
+    Footer
   },
   data() {
     return {
